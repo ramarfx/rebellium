@@ -1,14 +1,9 @@
-import backgroundImage from '../../public/bg/background.png'
-
 const About = () => {
-    const divStyle = {
-        backgroundImage: `url(${backgroundImage})`,
-    };
   return (
     <section
       id="about"
       className="bg-cover bg-center bg-repeat pb-36 pt-16"
-      style={divStyle}
+      style={{ backgroundImage: "url('/bg/background.png')" }}
     >
       <div className="container">
         <div
