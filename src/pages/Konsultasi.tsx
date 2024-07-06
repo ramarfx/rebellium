@@ -20,13 +20,13 @@ export const Konsultasi = () => {
                 data-aos="fade-right"
                 type="text"
                 placeholder="Masukkan nama"
-                className="my-2 rounded-2xl border-none pl-4 focus:ring-yellow"
+                className="my-2 rounded-2xl border-none pl-4 py-1 focus:ring-yellow"
               />
               <input
                 data-aos="fade-right"
                 type="email"
                 placeholder="Masukkan email"
-                className="my-2 rounded-2xl border-none pl-4 focus:ring-yellow"
+                className="my-2 rounded-2xl border-none pl-4 py-1 focus:ring-yellow"
               />
               <textarea
                 data-aos="fade-right"

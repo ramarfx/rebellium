@@ -13,7 +13,7 @@ const Team: React.FC = () => {
     if (teamSwiperRef.current) {
       new Swiper(teamSwiperRef.current, {
         effect: 'coverflow',
-        loop: true,
+        loop: false,
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: 3,

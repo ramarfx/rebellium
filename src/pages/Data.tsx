@@ -1,4 +1,49 @@
+import { CategoryScale, Chart, LinearScale, LineController, LineElement, PointElement, Title } from "chart.js"
+import { useEffect, useRef } from "react"
+
+Chart.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale);
+
 export const Data = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const chartRef = useRef<Chart | null>(null);
+
+  const data = [
+    { year: "2019", kasus: 0.4 },
+    { year: "2020", kasus: 0.65 },
+    { year: "2021", kasus: 0.22 },
+    { year: "2022", kasus: 0.14 },
+    { year: "2023", kasus: 0.16 },
+  
+  ];
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      if (chartRef.current) {
+        chartRef.current.destroy();
+      }
+      chartRef.current = new Chart(canvasRef.current, {
+        type: "line",
+        data: {
+          labels: data.map(item => item.year),
+          datasets: [
+            {
+              label: "kasus (%)",
+              data: data.map(item => item.kasus),
+              pointStyle: "circle",
+              borderWidth: 3,
+              pointRadius: 10,
+              pointHoverRadius: 15,
+              borderColor: "#6171C8",
+              fill: true,
+              backgroundColor: "#F89B11",
+            }
+          ]
+        }
+      })
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <section id="data" className="pb-[600px] md:pb-[1000px]">
       <div className="relative overflow-hidden pt-48">
@@ -169,7 +214,8 @@ export const Data = () => {
 
           <div className="w-full">
             <canvas
-              id="mychart"
+              ref={canvasRef}
+              id="myChart"
               className="my-5 mb-[600px] h-max border md:container md:mx-20 md:py-5"
             ></canvas>
           </div>
