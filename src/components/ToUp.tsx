@@ -8,6 +8,8 @@ const ToUp = () => {
     if (toUpRef.current) {
       if (window.scrollY > 0) {
         toUpRef.current.classList.remove("hidden");
+        console.log('udang');
+        
         toUpRef.current.classList.add("flex");
       } else {
         toUpRef.current.classList.remove("opacity-0");

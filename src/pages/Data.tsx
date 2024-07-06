@@ -7,6 +7,7 @@ import {
   LineElement,
   PointElement,
   Title,
+  Filler,
 } from "chart.js";
 import { useEffect, useRef } from "react";
 import { dataButtonList } from "../docs/dataButton";
@@ -19,6 +20,7 @@ Chart.register(
   LinearScale,
   Title,
   CategoryScale,
+  Filler
 );
 
 export const Data = () => {
