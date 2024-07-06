@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
+import Data from "./pages/Data";
 import Home from "./pages/Home";
 import Kasus from "./pages/Kasus";
 import Pengaruh from "./pages/Pengaruh";
@@ -13,6 +14,7 @@ function App() {
       <About />
       <Kasus />
       <Pengaruh />
+      <Data />
     </>
   );
 }
