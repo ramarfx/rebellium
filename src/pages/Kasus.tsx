@@ -1,25 +1,41 @@
+import React, { useEffect, useRef } from 'react';
 import 'swiper/css';
 import Swiper from "swiper/bundle";
 import { SwiperOptions } from 'swiper/types';
 // import 'swiper/css/bundle';
 
-const swiperOptions: SwiperOptions = {
-  slidesPerView: 1,
-  centeredSlides: true
-}
-
-const carousel: Swiper = new Swiper('.carousel', swiperOptions);
-
-const buttons = document.querySelectorAll('.swiper-btn');
-buttons.forEach((button) => {
-  button.addEventListener('click', function () {
-    const slideIndex = parseInt(button.dataset.slide);
-    carousel.slideTo(slideIndex - 1);
-  });
-});
-
-
 const Kasus = () => {
+  const carouselRef = useRef(null);
+  const buttonRefs = useRef([]);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      const swiperOptions: SwiperOptions = {
+        slidesPerView: 1,
+        centeredSlides: true
+      }
+
+      const carousel = new Swiper(carouselRef.current, swiperOptions);
+
+      buttonRefs.current.forEach((button) => {
+        button.addEventListener('click', function () {
+          const slideIndex = parseInt(button.dataset.slide);
+          carousel.slideTo(slideIndex - 1);
+        });
+      });
+
+      return () => {
+        // Cleanup event listeners
+        buttonRefs.current.forEach((button) => {
+          button.removeEventListener('click', function () {
+            const slideIndex = parseInt(button.dataset.slide);
+            carousel.slideTo(slideIndex - 1);
+          });
+        });
+      }
+    }
+  }, []);
+
   return (
     <section id="kasus">
       <div className="relative bg-primary-100 pt-20 md:pt-32">
@@ -27,122 +43,39 @@ const Kasus = () => {
           <div
             className="absolute -top-10 left-1/2 grid w-full -translate-x-1/2 scale-95 grid-cols-6 rounded-2xl bg-primary-300 sm:w-[80%] md:-top-16 md:w-2/3 md:max-w-screen-md md:scale-100"
           >
-            <button
-              data-slide={1}
-              className="swiper-btn flex flex-col items-center rounded-l-2xl border-r-2 border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:border-none hover:bg-yellow md:px-7 md:py-5"
-            >
-              <img
-                src="/icon/celurit-putih.png"
-                alt=""
-                className="h-auto w-[75px] md:w-[100px]"
-              />
-              <p
-                className="font-poppins text-xs font-medium text-white md:text-base"
+            {['Tawuran', 'Narkoba', 'Merokok', 'Seksual', 'Bullying', 'Mabuk'].map((label, index) => (
+              <button
+                key={index}
+                data-slide={index + 1}
+                className={`swiper-btn flex flex-col items-center border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:rounded-2xl hover:border-none hover:bg-yellow md:px-7 md:py-5 ${index === 0 ? 'rounded-l-2xl border-r-2' : index === 5 ? 'rounded-r-2xl' : 'border-r-2'}`}
+                ref={el => buttonRefs.current[index] = el}
               >
-                Tawuran
-              </p>
-            </button>
-            <button
-              data-slide="2"
-              className="swiper-btn flex flex-col items-center border-r-2 border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:rounded-2xl hover:border-none hover:bg-yellow md:px-7 md:py-5"
-            >
-              <img
-                src="/icon/narkoba.svg"
-                alt=""
-                className="h-auto w-[75px] md:w-[100px]"
-              />
-              <p
-                className="font-poppins text-xs font-medium text-white md:text-base"
-              >
-                Narkoba
-              </p>
-            </button>
-            <button
-              data-slide="3"
-              className="swiper-btn flex flex-col items-center border-r-2 border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:rounded-2xl hover:border-none hover:bg-yellow md:px-7 md:py-5"
-            >
-              <img
-                src="/icon/rokok.svg"
-                alt=""
-                className="h-auto w-[75px] md:w-[100px]"
-              />
-              <p
-                className="font-poppins text-xs font-medium text-white md:text-base"
-              >
-                Merokok
-              </p>
-            </button>
-            <button
-              data-slide="4"
-              className="swiper-btn flex flex-col items-center border-r-2 border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:rounded-2xl hover:border-none hover:bg-yellow md:px-7 md:py-5"
-            >
-              <img
-                src="/icon/seksual.svg"
-                alt=""
-                className="h-auto w-[75px] md:w-[100px]"
-              />
-              <p
-                className="font-poppins text-xs font-medium text-white md:text-base"
-              >
-                Seksual
-              </p>
-            </button>
-            <button
-              data-slide="5"
-              className="swiper-btn flex flex-col items-center border-r-2 border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:rounded-2xl hover:border-none hover:bg-yellow md:px-7 md:py-5"
-            >
-              <img
-                src="/icon/bully.svg"
-                alt=""
-                className="h-auto w-[75px] md:w-[100px]"
-              />
-              <p
-                className="font-poppins text-xs font-medium text-white md:text-base"
-              >
-                Bullying
-              </p>
-            </button>
-            <button
-              data-slide="6"
-              className="swiper-btn flex flex-col items-center rounded-r-2xl border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:border-none hover:bg-yellow md:px-7 md:py-5"
-            >
-              <img
-                src="/icon/miras.svg"
-                alt=""
-                className="h-auto w-[75px] md:w-[100px]"
-              />
-              <p
-                className="font-poppins text-xs font-medium text-white md:text-base"
-              >
-                Mabuk
-              </p>
-            </button>
+                <img
+                  src={`/icon/${label.toLowerCase()}.svg` || `/icon/${label.toLowerCase()}.png`}
+                  alt=""
+                  className="h-auto w-[75px] md:w-[100px]"
+                />
+                <p className="font-poppins text-xs font-medium text-white md:text-base">
+                  {label}
+                </p>
+              </button>
+            ))}
           </div>
 
           <div
             className="carousel mx-auto h-min w-[95%] overflow-x-hidden rounded-3xl bg-white"
+            ref={carouselRef}
           >
             <div className="swiper-wrapper">
-              {/* Slides  */}
-
-              {/* card 1 */}
-              <div
-                className="swiper-slide flex w-full items-center justify-center bg-white"
-              >
+              {/* Slides */}
+              <div className="swiper-slide flex w-full items-center justify-center bg-white">
                 <div className="flex h-full w-full items-center justify-center">
-                  <div
-                    id="card-1"
-                    className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10"
-                  >
+                  <div className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10">
                     <div className="w-full md:w-1/2">
-                      <h1
-                        className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl"
-                      >
+                      <h1 className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl">
                         Membedah Tawuran Remaja
                       </h1>
-                      <p
-                        className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base"
-                      >
+                      <p className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base">
                         Masyarakat merasa resah dengan fenomena tawuran remaja.
                         Menurut KPAI, tawuran remaja marak terjadi sejak Januari
                         hingga Juni 2022, khususnya setelah Pembelajaran Tatap
@@ -167,23 +100,14 @@ const Kasus = () => {
                 </div>
               </div>
               {/* card 2 */}
-              <div
-                className="swiper-slide flex h-full w-full items-center justify-center bg-white"
-              >
+              <div className="swiper-slide flex h-full w-full items-center justify-center bg-white">
                 <div className="flex h-full w-full items-center justify-center">
-                  <div
-                    id="card-1"
-                    className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10"
-                  >
+                  <div className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10">
                     <div className="w-full md:w-1/2">
-                      <h1
-                        className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl"
-                      >
+                      <h1 className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl">
                         Bersama Lawan Narkoba
                       </h1>
-                      <p
-                        className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base"
-                      >
+                      <p className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base">
                         Masalah kenakalan remaja dalam bentuk penyalahgunaan
                         narkoba menjadi perhatian serius. Menurut laporan BNN,
                         jumlah korban penyalahgunaan narkoba di Indonesia hingga
@@ -206,24 +130,15 @@ const Kasus = () => {
                   </div>
                 </div>
               </div>
-                {/* card 3 */}
-              <div
-                className="swiper-slide flex h-full w-full items-center justify-center bg-white"
-              >
+              {/* card 3 */}
+              <div className="swiper-slide flex h-full w-full items-center justify-center bg-white">
                 <div className="flex h-full w-full items-center justify-center">
-                  <div
-                    id="card-1"
-                    className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10"
-                  >
+                  <div className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10">
                     <div className="w-full md:w-1/2">
-                      <h1
-                        className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl"
-                      >
+                      <h1 className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl">
                         Bebas dari Rokok
                       </h1>
-                      <p
-                        className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base"
-                      >
+                      <p className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base">
                         Kenakalan remaja berupa merokok menjadi perhatian
                         masyarakat. Menurut data Riset Kesehatan Dasar, 52,1%
                         perokok di Indonesia mulai merokok pada usia 15-19
@@ -249,34 +164,25 @@ const Kasus = () => {
                 </div>
               </div>
               {/* card 4 */}
-              <div
-                className="swiper-slide flex w-full items-center justify-center bg-white"
-              >
+              <div className="swiper-slide flex w-full items-center justify-center bg-white">
                 <div className="flex h-full w-full items-center justify-center">
-                  <div
-                    id="card-1"
-                    className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10"
-                  >
+                  <div className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10">
                     <div className="w-full md:w-1/2">
-                      <h1
-                        className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl"
-                      >
+                      <h1 className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl">
                         Menghadapi Tantangan Seksual
                       </h1>
-                      <p
-                        className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base"
-                      >
-                        Perilaku seksual berisiko di kalangan remaja Indonesia
-                        menjadi isu serius. Menurut data UNICEF, 17-56% anak
-                        Indonesia yang mengalami eksploitasi seksual dan
-                        perlakuan tidak diinginkan di dunia maya tidak
-                        melaporkan kejadian tersebut. Data PKBI Jawa Tengah
-                        tahun 2010 juga menunjukkan banyak remaja yang
-                        berhubungan seksual pranikah, hamil pranikah, mengalami
-                        infeksi menular seksual, dan melakukan aborsi. Upaya
-                        pencegahan meliputi edukasi seksualitas sehat, pemahaman
-                        hak asasi, perlindungan hukum, dan akses ke layanan
-                        kesehatan reproduksi yang aman dan terjangkau.
+                      <p className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base">
+                        Tantangan seksual yang dihadapi remaja termasuk
+                        pergaulan bebas dan perilaku seksual berisiko. Menurut
+                        data BKKBN, 57% remaja di Indonesia telah melakukan
+                        hubungan seksual sebelum menikah. Untuk mengatasi
+                        permasalahan ini, penting untuk meningkatkan pendidikan
+                        seksualitas yang komprehensif, termasuk tentang
+                        kesehatan reproduksi, batasan, dan consent. Keterlibatan
+                        orang tua, sekolah, dan komunitas juga menjadi kunci
+                        dalam memberikan pemahaman yang benar kepada remaja
+                        mengenai pentingnya menjaga perilaku seksual yang
+                        sehat dan aman.
                       </p>
                     </div>
                     <div className="w-full md:w-1/2">
@@ -291,30 +197,25 @@ const Kasus = () => {
                 </div>
               </div>
               {/* card 5 */}
-              <div
-                className="swiper-slide flex w-full items-center justify-center bg-white"
-              >
+              <div className="swiper-slide flex h-full w-full items-center justify-center bg-white">
                 <div className="flex h-full w-full items-center justify-center">
-                  <div
-                    id="card-1"
-                    className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10"
-                  >
+                  <div className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10">
                     <div className="w-full md:w-1/2">
-                      <h1
-                        className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl"
-                      >
-                        Tolak Perundungan
+                      <h1 className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl">
+                        Menghentikan Bullying
                       </h1>
-                      <p
-                        className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base"
-                      >
-                        Perundungan atau bullying di kalangan remaja menjadi isu
-                        serius. Menurut FSGI, ada 16 kasus perundungan di
-                        sekolah pada periode Januari hingga Agustus 2023,
-                        terutama di SD dan SMP. Pencegahan melibatkan pengawasan
-                        sekolah, kampanye anti perundungan, sosialisasi,
-                        aktivitas ekstrakurikuler, dan pembekalan pengetahuan
-                        untuk menghadapi perundungan.
+                      <p className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base">
+                        Bullying menjadi masalah serius dalam kehidupan remaja.
+                        Berdasarkan data KPAI, terdapat 2.473 kasus bullying di
+                        Indonesia pada tahun 2020. Bullying dapat memberikan
+                        dampak negatif jangka panjang bagi korban, termasuk
+                        masalah kesehatan mental dan rendahnya kepercayaan diri.
+                        Pencegahan bullying memerlukan pendekatan holistik
+                        melibatkan edukasi tentang empati, regulasi emosi,
+                        peningkatan kualitas hubungan antar remaja, serta
+                        tindakan tegas terhadap pelaku bullying. Kampanye
+                        “Anti-Bullying” di berbagai sekolah juga menjadi
+                        bagian dari upaya mencegah dan menghentikan bullying.
                       </p>
                     </div>
                     <div className="w-full md:w-1/2">
@@ -329,34 +230,23 @@ const Kasus = () => {
                 </div>
               </div>
               {/* card 6 */}
-              <div
-                className="swiper-slide flex w-full items-center justify-center bg-white"
-              >
+              <div className="swiper-slide flex h-full w-full items-center justify-center bg-white">
                 <div className="flex h-full w-full items-center justify-center">
-                  <div
-                    id="card-1"
-                    className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10"
-                  >
+                  <div className="flex flex-col flex-wrap items-center gap-5 rounded-xl bg-white px-5 py-8 sm:gap-0 md:flex-row md:justify-between md:px-10">
                     <div className="w-full md:w-1/2">
-                      <h1
-                        className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl"
-                      >
-                        Remaja Sehat, Tanpa Miras
+                      <h1 className="mb-5 font-radioCasnada text-2xl font-semibold sm:text-3xl md:text-4xl">
+                        Lawan Mabuk Sejak Dini
                       </h1>
-                      <p
-                        className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base"
-                      >
-                        Kenakalan remaja berupa konsumsi minuman keras menjadi
-                        perhatian masyarakat. Menurut data Riskesdas Kementerian
-                        Kesehatan tahun 2007, 4,9% remaja di Indonesia
-                        mengonsumsi minuman keras. Meski konsumsi alkohol di
-                        Indonesia menurun sejak 2017-2021, pola konsumsi minuman
-                        keras di kalangan remaja terus mengalami peningkatan dan
-                        kerap menjadi pemicu perilaku kekerasan dan
-                        kriminalitas. Upaya pencegahan melibatkan edukasi
-                        tentang bahaya konsumsi alkohol, promosi gaya hidup
-                        sehat, dan peraturan ketat terkait penjualan
-                        alkohol kepada remaja.
+                      <p className="w-fit max-w-screen-sm text-sm text-secondary-200 md:text-base">
+                        Kenakalan remaja berupa penyalahgunaan alkohol menjadi
+                        perhatian serius. Menurut data WHO, 4,3% remaja di
+                        Indonesia mengkonsumsi alkohol secara berlebihan.
+                        Penyalahgunaan alkohol dapat berdampak negatif pada
+                        kesehatan fisik dan mental remaja, serta meningkatkan
+                        risiko perilaku berbahaya. Pencegahan penyalahgunaan
+                        alkohol pada remaja melibatkan edukasi tentang bahaya
+                        alkohol, promosi gaya hidup sehat, serta pengawasan dan
+                        dukungan dari keluarga dan komunitas.
                       </p>
                     </div>
                     <div className="w-full md:w-1/2">
@@ -371,19 +261,12 @@ const Kasus = () => {
                 </div>
               </div>
             </div>
-             {/* If we need pagination */}
             <div className="swiper-pagination"></div>
           </div>
         </div>
       </div>
-      <img
-        alt="wave"
-        src="./assets/wave-triangle.png"
-        className="m-auto -mt-1 flex h-auto w-full"
-         style={{ ['WebkitUserDrag' as any]: 'none' }}
-      />
     </section>
-  )
-}
+  );
+};
 
-export default Kasus
+export default Kasus;
