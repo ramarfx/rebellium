@@ -1,5 +1,6 @@
 import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
+import ToUp from "./components/ToUp";
 import About from "./pages/About";
 import Data from "./pages/Data";
 import Dokumentasi from "./pages/Dokumentasi";
@@ -14,6 +15,8 @@ function App() {
     <>
       <Navbar />
 
+      <ToUp />
+
       <Home />
       <About />
       <Kasus />
@@ -22,7 +25,7 @@ function App() {
       <Konsultasi />
       <Dokumentasi />
       <Team />
-      
+
       <Footer />
     </>
   );

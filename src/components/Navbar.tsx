@@ -1,3 +1,5 @@
+import 'flowbite'
+
 const Navbar = () => {
   return (
     <header>

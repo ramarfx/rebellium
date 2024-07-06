@@ -1,3 +1,5 @@
+import 'flowbite'
+
 const Pengaruh = () => {
     return ( 
         <section id="pengaruh" className="relative overflow-x-hidden pt-36">

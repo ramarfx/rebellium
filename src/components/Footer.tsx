@@ -1,4 +1,4 @@
-import IonIcon from '@reacticons/ionicons';
+import IonIcon from "@reacticons/ionicons";
 
 export const Footer = () => {
   return (
@@ -21,11 +21,15 @@ export const Footer = () => {
               <ul className="font-medium text-gray-500">
                 <li className="mb-4 flex items-center gap-3 text-base">
                   <IonIcon name="location"></IonIcon>
-                  <a href="#" className="hover:underline">SMK Negeri 46 Jakarta</a>
+                  <a href="#" className="hover:underline">
+                    SMK Negeri 46 Jakarta
+                  </a>
                 </li>
                 <li className="mb-4 flex items-center gap-3 text-base">
                   <IonIcon name="mail"></IonIcon>
-                  <a href="#" className="hover:underline">rebellumin@gmail.com</a>
+                  <a href="#" className="hover:underline">
+                    rebellumin@gmail.com
+                  </a>
                 </li>
               </ul>
             </div>
@@ -37,22 +41,34 @@ export const Footer = () => {
               </h2>
               <ul className="font-medium text-gray-500">
                 <li className="mb-4">
-                  <a href="#home" className="hover:underline">Beranda</a>
+                  <a href="#home" className="hover:underline">
+                    Beranda
+                  </a>
                 </li>
                 <li className="mb-4">
-                  <a href="#about" className="hover:underline">Tentang</a>
+                  <a href="#about" className="hover:underline">
+                    Tentang
+                  </a>
                 </li>
                 <li className="mb-4">
-                  <a href="#kasus" className="hover:underline">Kasus</a>
+                  <a href="#kasus" className="hover:underline">
+                    Kasus
+                  </a>
                 </li>
                 <li className="mb-4">
-                  <a href="#pengaruh" className="hover:underline">Pengaruh</a>
+                  <a href="#pengaruh" className="hover:underline">
+                    Pengaruh
+                  </a>
                 </li>
                 <li className="mb-4">
-                  <a href="#data" className="hover:underline">Data</a>
+                  <a href="#data" className="hover:underline">
+                    Data
+                  </a>
                 </li>
                 <li className="mb-4">
-                  <a href="#dokumentasi" className="hover:underline">Dokumentasi</a>
+                  <a href="#dokumentasi" className="hover:underline">
+                    Dokumentasi
+                  </a>
                 </li>
               </ul>
             </div>
@@ -63,43 +79,45 @@ export const Footer = () => {
               </h2>
               <ul className="font-medium text-gray-500">
                 <li className="mb-4">
-                  <a href="https://Detik.com" className="lowercase hover:underline"
-                    >Detik.com</a
-                  >
+                  <a
+                    href="https://Detik.com"
+                    className="lowercase hover:underline">
+                    Detik.com
+                  </a>
                 </li>
                 <li className="mb-4">
                   <a
                     href="https://Kompasiana.com"
-                    className="lowercase hover:underline"
-                    >Kompasiana
+                    className="lowercase hover:underline">
+                    Kompasiana
                   </a>
                 </li>
                 <li className="mb-4">
                   <a
                     href="https://Channel9.id"
-                    className="lowercase hover:underline"
-                    >Channel9.id
+                    className="lowercase hover:underline">
+                    Channel9.id
                   </a>
                 </li>
                 <li className="mb-4">
                   <a
                     href="https://Goodstats.id"
-                    className="lowercase hover:underline"
-                    >Goodstats.id
+                    className="lowercase hover:underline">
+                    Goodstats.id
                   </a>
                 </li>
                 <li className="mb-4">
                   <a
                     href="https://pusiknas.polri.go.id/"
-                    className="lowercase hover:underline"
-                    >pusiknas.polri
+                    className="lowercase hover:underline">
+                    pusiknas.polri
                   </a>
                 </li>
                 <li className="mb-4">
                   <a
                     href="https://www.haibunda.com/"
-                    className="lowercase hover:underline"
-                    >haibunda.com
+                    className="lowercase hover:underline">
+                    haibunda.com
                   </a>
                 </li>
               </ul>
@@ -111,27 +129,23 @@ export const Footer = () => {
               </h2>
               <ul className="font-medium text-gray-500">
                 <li className="mb-4">
-                  <a href="https://www.freepik.com/" className="hover:underline"
-                    >Freepik</a
-                  >
-                </li>
-                {/* <!-- <li className="mb-4">
-                  <a href="https://skfb.ly/oLst6" className="hover:underline">
-                    <span className="block font-bold">Celurit by</span> M.Riv'an
-                    Fajar
+                  <a
+                    href="https://www.freepik.com/"
+                    className="hover:underline">
+                    Freepik
                   </a>
-                </li> --> */}
+                </li>
               </ul>
             </div>
           </div>
         </div>
         <hr className="my-6 border-gray-700 sm:mx-auto lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-center text-sm text-gray-500"
-            >Dibuat oleh tim Rebellum
+          <span className="text-center text-sm text-gray-500">
+            Dibuat oleh tim Rebellum
           </span>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
