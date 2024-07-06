@@ -1,6 +1,23 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
+import Swiper from "swiper/bundle";
+import { SwiperOptions } from 'swiper/types';
+// import 'swiper/css/bundle';
+
+const swiperOptions: SwiperOptions = {
+  slidesPerView: 1,
+  centeredSlides: true
+}
+
+const carousel: Swiper = new Swiper('.carousel', swiperOptions);
+
+const buttons = document.querySelectorAll('.swiper-btn');
+buttons.forEach((button) => {
+  button.addEventListener('click', function () {
+    const slideIndex = parseInt(button.dataset.slide);
+    carousel.slideTo(slideIndex - 1);
+  });
+});
+
 
 const Kasus = () => {
   return (
@@ -11,7 +28,7 @@ const Kasus = () => {
             className="absolute -top-10 left-1/2 grid w-full -translate-x-1/2 scale-95 grid-cols-6 rounded-2xl bg-primary-300 sm:w-[80%] md:-top-16 md:w-2/3 md:max-w-screen-md md:scale-100"
           >
             <button
-              data-slide="1"
+              data-slide={1}
               className="swiper-btn flex flex-col items-center rounded-l-2xl border-r-2 border-primary-200 px-2 py-1 transition-all hover:scale-110 hover:border-none hover:bg-yellow md:px-7 md:py-5"
             >
               <img
