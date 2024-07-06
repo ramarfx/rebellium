@@ -105,6 +105,14 @@ const Kasus = () => {
           </div>
         </div>
       </div>
+
+      {/* wave triangle */}
+      <img
+        alt="wave"
+        src="/svg/wave-triangle.png"
+        className="m-auto -mt-1 flex h-auto w-full"
+        draggable='false'
+      />
     </section>
   );
 };

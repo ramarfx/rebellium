@@ -1,7 +1,7 @@
 const Navbar = () => {
   return (
     <header>
-      <nav className="fixed left-0 top-0 z-[99999] w-full border-gray-200 bg-white bg-opacity-70">
+      <nav className="fixed left-0 top-0 z-[99999] w-full border-gray-200 bg-white/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between p-4">
           <a
             href="#"
@@ -27,9 +27,9 @@ const Navbar = () => {
               viewBox="0 0 17 14">
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
