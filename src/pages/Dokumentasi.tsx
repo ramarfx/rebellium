@@ -27,7 +27,6 @@ export const Dokumentasi = () => {
             className="h-[250px] w-[640px] max-w-full md:h-[350px]"
             src="https://www.youtube.com/embed/eeOebdHoq7E?si=Ib71egD9sGth6uXw"
             title="Bahaya Kenakalan Remaja"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>

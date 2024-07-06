@@ -1,6 +1,7 @@
 import {
   CategoryScale,
   Chart,
+  ChartConfiguration,
   LinearScale,
   LineController,
   LineElement,
@@ -17,7 +18,7 @@ Chart.register(
   PointElement,
   LinearScale,
   Title,
-  CategoryScale
+  CategoryScale,
 );
 
 export const Data = () => {
@@ -27,37 +28,39 @@ export const Data = () => {
 
   let currentData = data[0];
 
+  const chartOptions : ChartConfiguration = {
+    type: "line",
+    data: {
+      labels: data[0].map((item) => item.year),
+      datasets: [
+        {
+          label: "kasus (%)",
+          data: currentData.map((item) => item.kasus),
+          pointStyle: "circle",
+          borderWidth: 3,
+          pointRadius: 10,
+          pointHoverRadius: 15,
+          borderColor: "#6171C8",
+          fill: true,
+          backgroundColor: "#F89B11",
+        },
+      ],
+    },
+  }
+
+
   useEffect(() => {
     if (canvasRef.current && buttonRefs.current) {
       if (chartRef.current) {
         chartRef.current.destroy();
       }
 
-      chartRef.current = new Chart(canvasRef.current, {
-        type: "line",
-        data: {
-          labels: data[0].map((item) => item.year),
-          datasets: [
-            {
-              label: "kasus (%)",
-              data: currentData.map((item) => item.kasus),
-              pointStyle: "circle",
-              borderWidth: 3,
-              pointRadius: 10,
-              pointHoverRadius: 15,
-              borderColor: "#6171C8",
-              fill: true,
-              backgroundColor: "#F89B11",
-            },
-          ],
-        },
-      });
+      chartRef.current = new Chart(canvasRef.current, chartOptions);
 
       buttonRefs.current.forEach((button, index) => {
         button.onclick = () => {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
           currentData = data[index];
-          
+
           // Update chart data
           if (chartRef.current) {
             chartRef.current.data.labels = currentData.map((item) => item.year);
@@ -67,7 +70,7 @@ export const Data = () => {
             chartRef.current.update();
           }
 
-        };
+        }
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -3,33 +3,24 @@ const About = () => {
     <section
       id="about"
       className="bg-cover bg-center bg-repeat pb-36 pt-16"
-      style={{ backgroundImage: "url('/bg/background.png')" }}
-    >
+      style={{ backgroundImage: "url('/bg/background.png')" }}>
       <div className="container">
-        <div
-          className="flex flex-col-reverse flex-wrap items-center justify-between gap-10 md:flex-row md:gap-0"
-        >
-          <div
-            className="relative flex w-full items-center justify-center md:w-1/2"
-          >
+        <div className="flex flex-col-reverse flex-wrap items-center justify-between gap-10 md:flex-row md:gap-0">
+          <div className="relative flex w-full items-center justify-center md:w-1/2">
             <canvas
               id="logoCanvas"
-              className="mx-auto h-[400px] w-[300px] md:w-[500px]"
-            >
-            </canvas>
+              className="mx-auto h-[400px] w-[300px] md:w-[500px]"></canvas>
 
             <div
               id="loading2"
-              className="absolute flex h-56 w-56 items-center justify-center rounded-lg"
-            >
+              className="absolute flex h-56 w-56 items-center justify-center rounded-lg">
               <div role="status">
                 <svg
                   aria-hidden="true"
                   className="w-h-12 h-12 animate-spin fill-yellow text-gray-200 dark:text-gray-600"
                   viewBox="0 0 100 101"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
                     fill="currentColor"
@@ -46,8 +37,7 @@ const About = () => {
           <div className="w-full md:w-1/2">
             <h1
               id="rebelliumText"
-              className="relative mb-8 font-radioCasnada text-4xl font-semibold md:text-5xl"
-            >
+              className="relative mb-8 font-radioCasnada text-4xl font-semibold md:text-5xl">
               Apa itu <span className="text-yellow">Rebellum?</span>
               <div className="line"></div>
             </h1>
@@ -55,8 +45,7 @@ const About = () => {
               data-aos="fade-zoom-in"
               data-aos-easing="ease-in-back"
               id="rebelliumDesc"
-              className="text-sm text-secondary-200 md:max-w-2xl md:text-base"
-            >
+              className="text-sm text-secondary-200 md:max-w-2xl md:text-base">
               Rebellum adalah website yang kami ciptakan untuk membantu
               menyelesaikan permasalahan yang lagi marak dan sulit untuk
               terselesaikan, yaitu Kenakalan Remaja. Kami menjelaskan,
@@ -67,7 +56,7 @@ const About = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;

@@ -9,32 +9,21 @@ const Kasus = () => {
   const carouselRef = useRef(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
 
+  const swiperOptions: SwiperOptions = {
+    slidesPerView: 1,
+    centeredSlides: true,
+  };
+
   useEffect(() => {
     if (carouselRef.current) {
-      const swiperOptions: SwiperOptions = {
-        slidesPerView: 1,
-        centeredSlides: true,
-      };
-
       const carousel = new Swiper(carouselRef.current, swiperOptions);
 
       buttonRefs.current.forEach((button) => {
-        button.addEventListener("click", function () {
+        button.onclick = () => {
           const slideIndex = parseInt(button.dataset.slide as string);
           carousel.slideTo(slideIndex - 1);
-        });
+        }
       });
-
-      return () => {
-        // Cleanup event listeners
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        buttonRefs.current.forEach((button) => {
-          button.removeEventListener("click", function () {
-            const slideIndex = parseInt(button.dataset.slide as string);
-            carousel.slideTo(slideIndex - 1);
-          });
-        });
-      };
     }
   }, []);
 
@@ -111,7 +100,7 @@ const Kasus = () => {
         alt="wave"
         src="/svg/wave-triangle.png"
         className="m-auto -mt-1 flex h-auto w-full"
-        draggable='false'
+        draggable="false"
       />
     </section>
   );
