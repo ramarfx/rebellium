@@ -3,7 +3,7 @@ export const Data = () => {
     <section id="data" className="pb-[600px] md:pb-[1000px]">
       <div className="relative overflow-hidden pt-48">
         <img
-          src="/city.png"
+          src="icon/city2.png"
           alt="city"
           loading="eager"
           className="city relative -left-60 bottom-20 -z-10 -mt-5 scale-150 will-change-transform md:w-full md:scale-[1.7]"
