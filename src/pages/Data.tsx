@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { useEffect, useRef } from "react";
 import { dataButtonList } from "../docs/dataButton";
-import { data } from "../docs/dataChart";
+import { data, DataChart } from "../docs/dataChart";
 
 Chart.register(
   LineController,
@@ -27,17 +27,16 @@ export const Data = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
+  const currentData = useRef<DataChart>(data[0])
 
-  let currentData = data[0];
-
-  const chartOptions : ChartConfiguration = {
+  const chartOptions: ChartConfiguration = {
     type: "line",
     data: {
       labels: data[0].map((item) => item.year),
       datasets: [
         {
           label: "kasus (%)",
-          data: currentData.map((item) => item.kasus),
+          data: currentData.current.map((item) => item.kasus),
           pointStyle: "circle",
           borderWidth: 3,
           pointRadius: 10,
@@ -48,8 +47,20 @@ export const Data = () => {
         },
       ],
     },
-  }
+  };
 
+  const handleButtonClick = (index: number) => {
+    currentData.current = data[index];
+
+    // Update chart data
+    if (chartRef.current) {
+      chartRef.current.data.labels = currentData.current.map((item) => item.year);
+      chartRef.current.data.datasets[0].data = currentData.current.map(
+        (item) => item.kasus
+      );
+      chartRef.current.update();
+    }
+  };
 
   useEffect(() => {
     if (canvasRef.current && buttonRefs.current) {
@@ -60,19 +71,7 @@ export const Data = () => {
       chartRef.current = new Chart(canvasRef.current, chartOptions);
 
       buttonRefs.current.forEach((button, index) => {
-        button.onclick = () => {
-          currentData = data[index];
-
-          // Update chart data
-          if (chartRef.current) {
-            chartRef.current.data.labels = currentData.map((item) => item.year);
-            chartRef.current.data.datasets[0].data = currentData.map(
-              (item) => item.kasus
-            );
-            chartRef.current.update();
-          }
-
-        }
+        button.onclick = () => handleButtonClick(index);
       });
     }
   }, []);
@@ -108,7 +107,6 @@ export const Data = () => {
           <div
             id="button-container"
             className="mt-10 grid grid-cols-2 grid-rows-3 flex-wrap items-center justify-center gap-5 md:flex">
-            {/* <!-- card 1 --> */}
             {dataButtonList.map((button, index) => (
               <button
                 key={index}

@@ -1,6 +1,6 @@
-type Data = { year: string; kasus: number }[];
+export type DataChart = { year: string; kasus: number }[];
 
-export const data: Data[] = [
+export const data: DataChart[] = [
   [
     { year: "2019", kasus: 0.4 },
     { year: "2020", kasus: 0.65 },

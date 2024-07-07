@@ -1,4 +1,5 @@
 import IonIcon from "@reacticons/ionicons";
+import { navigationList } from "../docs/navigation";
 
 export const Footer = () => {
   return (
@@ -40,36 +41,13 @@ export const Footer = () => {
                 Akses Konten
               </h2>
               <ul className="font-medium text-gray-500">
-                <li className="mb-4">
-                  <a href="#home" className="hover:underline">
-                    Beranda
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#about" className="hover:underline">
-                    Tentang
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#kasus" className="hover:underline">
-                    Kasus
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#pengaruh" className="hover:underline">
-                    Pengaruh
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#data" className="hover:underline">
-                    Data
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#dokumentasi" className="hover:underline">
-                    Dokumentasi
-                  </a>
-                </li>
+                {navigationList.map((item) => (
+                  <li className="mb-4">
+                    <a href={item.href} className="hover:underline">
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 

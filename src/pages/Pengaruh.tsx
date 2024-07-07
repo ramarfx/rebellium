@@ -2,7 +2,7 @@ const Pengaruh = () => {
     return ( 
         <section id="pengaruh" className="relative overflow-x-hidden pt-36">
         <img
-          src="./assets/pesawat.png"
+          src="/icon/pesawat.png"
           loading="eager"
           className="pesawat sm:scl absolute -top-1 right-0 w-auto scale-150 will-change-transform md:h-auto md:max-w-full md:scale-100"
           alt="pesawat"

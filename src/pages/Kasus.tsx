@@ -14,15 +14,17 @@ const Kasus = () => {
     centeredSlides: true,
   };
 
+  const handleButtonCLick = (button: HTMLButtonElement, carousel: Swiper) => {
+    const slideIndex = parseInt(button.dataset.slide as string);
+    carousel.slideTo(slideIndex - 1);
+  };
+
   useEffect(() => {
     if (carouselRef.current) {
       const carousel = new Swiper(carouselRef.current, swiperOptions);
 
       buttonRefs.current.forEach((button) => {
-        button.onclick = () => {
-          const slideIndex = parseInt(button.dataset.slide as string);
-          carousel.slideTo(slideIndex - 1);
-        }
+        button.onclick = () => handleButtonCLick(button, carousel);
       });
     }
   }, []);
