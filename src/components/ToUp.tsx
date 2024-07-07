@@ -4,26 +4,29 @@ import { useEffect, useRef } from "react";
 const ToUp = () => {
   const toUpRef = useRef<HTMLAnchorElement>(null);
 
-  useEffect(() => {
+  const handleScroll = () => {
     if (toUpRef.current) {
-      if (window.scrollY > 0) {
-        toUpRef.current.classList.remove("hidden");
-        console.log('udang');
-        
-        toUpRef.current.classList.add("flex");
+      if (window.scrollY > 500) {
+        toUpRef.current.style.transform = 'translateX(0)'
       } else {
-        toUpRef.current.classList.remove("opacity-0");
-        toUpRef.current.classList.add("hidden");
-        toUpRef.current.classList.remove("flex");
+        toUpRef.current.style.transform = 'translateX(100px)'
       }
     }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
+
   return (
     <a
       ref={toUpRef}
-      id="toUp"
       href="#home"
-      className="group/up fixed bottom-8 right-5 z-30 hidden cursor-pointer items-center justify-center rounded-full bg-yellow p-3 text-xl text-white opacity-100 transition duration-300 md:p-5">
+      className="group/up size-[50px] flex fixed bottom-8 right-5 translate-x-[100px] z-30 cursor-pointer items-center justify-center rounded-full bg-yellow text-xl text-white opacity-100 transition duration-300">
       <IonIcon
         name="arrow-up-outline"
         className="transition group-hover/up:-translate-y-1"></IonIcon>

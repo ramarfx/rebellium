@@ -36,7 +36,7 @@ export const Konsultasi = () => {
               ></textarea>
               <button
                 type="button"
-                className="mt-2 w-[100px] rounded-l-3xl rounded-r-3xl bg-yellow px-5 py-3 text-white"
+                className="mt-2 w-full md:w-[100px] rounded-l-3xl rounded-r-3xl bg-yellow px-5 py-3 text-white"
               >
                 Kirim
               </button>
