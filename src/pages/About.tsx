@@ -1,4 +1,30 @@
+import { useEffect, useRef } from "react";
+
 const About = () => {
+  const lineRef = useRef<HTMLDivElement>(null);
+
+  const moveLine = () => {
+    const line = lineRef.current;
+    if (line) {
+      const linePosition =
+        line.getBoundingClientRect().top - window.innerHeight;
+
+      if (linePosition < 0) {
+        line.style.width = `${Math.abs(linePosition)}px`;
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (lineRef.current) {
+      window.addEventListener("scroll", moveLine);
+
+      return () => {
+        window.removeEventListener("scroll", moveLine);
+      };
+    }
+  }, []);
+
   return (
     <section
       id="about"
@@ -39,7 +65,7 @@ const About = () => {
               id="rebelliumText"
               className="relative mb-8 font-radioCasnada text-4xl font-semibold md:text-5xl">
               Apa itu <span className="text-yellow">Rebellum?</span>
-              <div className="line"></div>
+              <div ref={lineRef} className="line bg-primary-100"></div>
             </h1>
             <p
               data-aos="fade-zoom-in"
