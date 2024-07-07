@@ -1,29 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import useScrollAnimation from "../func/scrollAnimation";
 
 const About = () => {
-  const lineRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef(null);
 
-  const moveLine = () => {
-    const line = lineRef.current;
-    if (line) {
-      const linePosition =
-        line.getBoundingClientRect().top - window.innerHeight;
+  useScrollAnimation(lineRef, (element, position) => {
+    const positionTop = position.top - window.innerHeight;
 
-      if (linePosition < 0) {
-        line.style.width = `${Math.abs(linePosition)}px`;
-      }
+    if (positionTop < 0) {
+      element.style.width = `${Math.abs(positionTop)}px`;
     }
-  };
-
-  useEffect(() => {
-    if (lineRef.current) {
-      window.addEventListener("scroll", moveLine);
-
-      return () => {
-        window.removeEventListener("scroll", moveLine);
-      };
-    }
-  }, []);
+  });
 
   return (
     <section
