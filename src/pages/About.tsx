@@ -6,9 +6,12 @@ const About = () => {
 
   useScrollAnimation(lineRef, (element, position) => {
     const positionTop = position.top - window.innerHeight;
+    const marginRight = 16; 
 
     if (positionTop < 0) {
-      element.style.width = `${Math.abs(positionTop)}px`;
+      const newWidth = Math.abs(positionTop);
+      const maxWidth = window.innerWidth - element.getBoundingClientRect().left - marginRight;
+      element.style.width = `${Math.min(newWidth, maxWidth)}px`;
     }
   });
 
