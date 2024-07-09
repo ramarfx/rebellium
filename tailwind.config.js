@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
+  important: true,
   darkMode: 'selector',
   content: [
     "./index.html",

@@ -41,8 +41,8 @@ export const Footer = () => {
                 Akses Konten
               </h2>
               <ul className="font-medium text-gray-500">
-                {navigationList.map((item) => (
-                  <li className="mb-4">
+                {navigationList.map((item, index) => (
+                  <li className="mb-4" key={index}>
                     <a href={item.href} className="hover:underline">
                       {item.title}
                     </a>
