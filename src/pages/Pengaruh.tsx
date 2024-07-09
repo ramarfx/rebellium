@@ -1,4 +1,22 @@
+import { useRef } from "react";
+import useScrollAnimation from "../func/scrollAnimation";
+
 const Pengaruh = () => {
+  const pesawatRef = useRef(null);
+
+  useScrollAnimation(pesawatRef, (element, position) => {
+    const positionTop = position.top - window.innerHeight;
+    let parallaxSpeed = 2;
+
+    if (window.innerWidth <= 768) {
+      parallaxSpeed = 0.5; 
+    }
+
+    if (positionTop < 0) {
+      const parallaxShift = Math.min(Math.abs(positionTop) / 3 * parallaxSpeed, window.innerWidth / 3);
+      element.style.transform = `translateX(-${parallaxShift}px)`;
+    }
+  });
     return ( 
         <section id="pengaruh" className="relative overflow-x-hidden pt-36">
         <img
@@ -6,6 +24,7 @@ const Pengaruh = () => {
           loading="eager"
           className="pesawat sm:scl absolute -top-1 right-0 w-auto scale-150 will-change-transform md:h-auto md:max-w-full md:scale-100"
           alt="pesawat"
+          ref={pesawatRef}
         />
         <div className="container">
           <h1
