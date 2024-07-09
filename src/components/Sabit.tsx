@@ -12,7 +12,7 @@ extend({
 const Sabit = () => {
   return (
     <Canvas
-      className="h-[350px] w-screen md:h-[300px] md:w-[1000px] border"
+      className="h-[350px] w-screen md:h-[300px] md:w-[500px] border"
       camera={{ position: [0, 0, 82] }}>
       <Suspense fallback={<Loader />}>
         <ambientLight intensity={8} />

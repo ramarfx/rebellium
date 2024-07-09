@@ -34,7 +34,7 @@ const Home = () => {
               <span className="button-text translate-x-2">Selengkapnya</span>
             </button>
           </div>
-          <div className="relative flex w-1/2 h-full items-center justify-center px-4">
+          <div className="relative flex md:w-1/2 h-full items-center justify-center -ml-4 md:px-4">
             <Sabit />
           </div>
         </div>
