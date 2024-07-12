@@ -8,7 +8,7 @@ import 'aos/dist/aos.css'
 
 Aos.init({
   mirror: false,
-  once: true
+  once: true,
 })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
