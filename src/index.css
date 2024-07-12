@@ -71,6 +71,27 @@ button.learn-more .circle .icon.arrow::before {
   transform: rotate(45deg);
 }
 
+
+.pesawat-parallax {
+  position: absolute;
+  top: 1%;
+  right: 0;
+  width: auto;
+  transform: translateX(0);
+  transition: transform 0.3s ease-out; /* Atur transisi sesuai kebutuhan */
+}
+
+@media (max-width: 768px) {
+  .pesawat-parallax {
+    transition: transform 0.3s ease-out; /* Transisi untuk perangkat mobile */
+  }
+}
+
+.pesawat-parallax.animate {
+  transform: translateX(-50px); /* Sesuaikan dengan efek parallax yang diinginkan */
+}
+
+
 button.learn-more .button-text {
   @apply text-primary-200;
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);

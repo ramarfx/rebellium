@@ -1,31 +1,42 @@
-import { useRef } from "react";
-import useScrollAnimation from "../func/scrollAnimation";
+import { useRef, useEffect } from "react";
 
 const Pengaruh = () => {
-  const pesawatRef = useRef(null);
+  const pesawatRef = useRef<HTMLImageElement | null>(null);
 
-  useScrollAnimation(pesawatRef, (element, position) => {
-    const positionTop = position.top - window.innerHeight;
-    let parallaxSpeed = 2;
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = pesawatRef.current;
+      if (element) {
+        const positionTop = element.getBoundingClientRect().top - window.innerHeight;
+        let parallaxSpeed = 2;
 
-    if (window.innerWidth <= 768) {
-      parallaxSpeed = 0.5; 
-    }
+        if (window.innerWidth <= 768) {
+          parallaxSpeed = 0.5; 
+        }
 
-    if (positionTop < 0) {
-      const parallaxShift = Math.min(Math.abs(positionTop) / 3 * parallaxSpeed, window.innerWidth / 3);
-      element.style.transform = `translateX(-${parallaxShift}px)`;
-    }
-  });
-    return ( 
-        <section id="pengaruh" className="relative overflow-x-hidden pt-36">
-        <img
-          src="/icon/pesawat.png"
-          loading="eager"
-          className="pesawat sm:scl absolute -top-1 right-0 w-auto scale-150 will-change-transform md:h-auto md:max-w-full md:scale-100"
-          alt="pesawat"
-          ref={pesawatRef}
-        />
+        if (positionTop < 0) {
+          const parallaxShift = Math.min(Math.abs(positionTop) / 3 * parallaxSpeed, window.innerWidth / 3);
+          element.style.transform = `translateX(-${parallaxShift}px)`;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <section id="pengaruh" className="relative overflow-x-hidden pt-36">
+      <img
+        src="/icon/pesawat.png"
+        loading="eager"
+        className="pesawat-parallax"
+        alt="pesawat"
+        ref={pesawatRef}
+      />
         <div className="container">
           <h1
             data-aos="fade-up"
