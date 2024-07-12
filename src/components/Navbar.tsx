@@ -1,4 +1,20 @@
+import { useEffect, useRef } from "react";
+
 const Navbar = () => {
+  const collapseBtnRef = useRef<HTMLButtonElement>(null);
+  const collapseRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (collapseRef.current && collapseBtnRef.current) {
+      const collapse = collapseRef.current
+      const collapseBtn = collapseBtnRef.current
+
+      collapseBtn.onclick = () => {
+        collapse.classList.toggle("hidden")
+      }
+    }
+  },[])
+
   return (
     <header>
       <nav className="fixed left-0 top-0 z-[99999] w-full border-gray-200 bg-white/70 backdrop-blur-md">
@@ -13,7 +29,7 @@ const Navbar = () => {
             />
           </a>
           <button
-            data-collapse-toggle="navbar-dropdown"
+            ref={collapseBtnRef}
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
             aria-controls="navbar-dropdown"
@@ -35,9 +51,8 @@ const Navbar = () => {
             </svg>
           </button>
           <div
-            className="hidden w-full md:block md:w-auto"
-            id="navbar-dropdown">
-            <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-white p-4 font-medium md:mt-0 md:flex-row md:items-center md:space-x-8 md:border-0 md:bg-transparent md:p-0 rtl:space-x-reverse">
+            className="w-full hidden md:block md:w-auto" ref={collapseRef}>
+            <ul className="mt-4 flex flex-col h-full rounded-lg border border-gray-100 bg-white p-4 font-medium md:mt-0 md:flex-row md:items-center md:space-x-8 md:border-0 md:bg-transparent md:p-0 rtl:space-x-reverse">
               <li>
                 <a
                   id="homenav"
