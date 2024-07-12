@@ -12,6 +12,7 @@ import {
 import { useEffect, useRef } from "react";
 import { dataButtonList } from "../docs/dataButton";
 import { data, DataChart } from "../docs/dataChart";
+import City from "../components/City";
 
 Chart.register(
   LineController,
@@ -27,7 +28,7 @@ export const Data = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const chartRef = useRef<Chart | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
-  const currentData = useRef<DataChart>(data[0])
+  const currentData = useRef<DataChart>(data[0]);
 
   const chartOptions: ChartConfiguration = {
     type: "line",
@@ -54,7 +55,9 @@ export const Data = () => {
 
     // Update chart data
     if (chartRef.current) {
-      chartRef.current.data.labels = currentData.current.map((item) => item.year);
+      chartRef.current.data.labels = currentData.current.map(
+        (item) => item.year
+      );
       chartRef.current.data.datasets[0].data = currentData.current.map(
         (item) => item.kasus
       );
@@ -78,14 +81,7 @@ export const Data = () => {
 
   return (
     <section id="data" className="pb-[600px] md:pb-[1000px]">
-      <div className="relative overflow-hidden pt-48">
-        <img
-          src="/icon/city2.png"
-          alt="city"
-          loading="eager"
-          className="city relative -left-60 bottom-20 -z-10 -mt-5 scale-150 will-change-transform md:w-full md:scale-[1.7]"
-        />
-      </div>
+      <City />
       <div
         data-aos="fade-up"
         data-aos-easing="ease-out"
@@ -113,6 +109,9 @@ export const Data = () => {
                 ref={(e) =>
                   (buttonRefs.current[index] = e as HTMLButtonElement)
                 }
+                data-aos="fade-in"
+                data-aos-delay={index * 200}
+                data-aos-duration={300}
                 className="flex w-full max-w-xs cursor-pointer gap-2 rounded-xl bg-[#6874B9] p-3 transition hover:-translate-y-1 hover:bg-yellow hover:opacity-90 md:w-fit">
                 <div className="flex h-[48px] w-[80px] items-center justify-center rounded-lg bg-white text-black md:h-[96px] md:w-[96px]">
                   <img src={button.image} className="h-auto w-full" alt="" />
