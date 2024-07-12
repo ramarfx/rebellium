@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { Dampak, Solusi } from "../components/Accordion";
 
 const Pengaruh = () => {
   const pesawatRef = useRef<HTMLImageElement | null>(null);
@@ -67,8 +68,8 @@ const Pengaruh = () => {
               <h2 className="mb-5 text-center text-2xl font-semibold">
                 Dampak Kenakalan Remaja
               </h2>
-  
-              <div id="accordion-1" data-accordion="collapse">
+              <Dampak/>
+              {/* <div id="accordion-1" data-accordion="collapse">
                 <h2 id="accordion-collapse-heading-11">
                   <button
                     type="button"
@@ -370,7 +371,7 @@ const Pengaruh = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             {/* <!-- card 2 --> */}
             <div
@@ -380,8 +381,10 @@ const Pengaruh = () => {
               <h2 className="mb-5 text-center text-2xl font-semibold">
                 Solusi Kenakalan Remaja
               </h2>
+
+              <Solusi/>
   
-              <div id="accordion-collapse" data-accordion="collapse">
+              {/* <div id="accordion-collapse" data-accordion="collapse">
                 <h2 id="accordion-collapse-heading-1">
                   <button
                     type="button"
@@ -721,7 +724,7 @@ const Pengaruh = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
