@@ -15,6 +15,7 @@ type GLTFResult = GLTF & {
 
 const Celurit: React.FC<GroupProps> = (props) => {
   const { nodes, materials } = useGLTF('/3D/celurit.glb') as unknown as GLTFResult;
+  
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>

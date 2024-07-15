@@ -5,35 +5,66 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import Celurit from "./models/Celurit";
 import { useRotateAnimation } from "../func/rotateAnimation";
 import { Group } from "three";
+import Kapsul from "./models/Kapsul";
+import Botol from "./models/Botol";
+import Obat from "./models/Obat";
 
 extend({
   OrbitControls,
   Celurit,
+  Kapsul,
 });
 
 const Scene = () => {
-  const celuritRef = useRef<Group>(null!);
-  useRotateAnimation(celuritRef);
+  const rotateGroupRef = useRef<Group>(null!);
+  const floatGroupRef = useRef<Group>(null!);
+  useRotateAnimation(rotateGroupRef);
 
   return (
     <>
-      <OrbitControls enablePan={false} enableZoom={false} />
+      <OrbitControls enablePan={false} enableZoom={false} autoRotate={false} />
       <ambientLight intensity={8} />
 
-      <group position={[0, 20, 0]} ref={celuritRef}>
+      <group position={[0, 20, 0]}>
         <directionalLight intensity={5} position={[30, 50, 30]} />
         <directionalLight intensity={5} position={[-30, -15, -30]} />
 
-        <Celurit
-          scale={25}
-          position={[-20, 0, 0]}
-          rotation={[0, 0, Math.PI / 6]}
-        />
-        <Celurit
-          scale={25}
-          position={[20, 0, 0]}
-          rotation={[0, Math.PI, Math.PI / 6]}
-        />
+        <group ref={rotateGroupRef}>
+          <Celurit
+            scale={25}
+            position={[-20, 0, 0]}
+            rotation={[0, 0, Math.PI / 6]}
+          />
+          <Celurit
+            scale={25}
+            position={[20, 0, 0]}
+            rotation={[0, Math.PI, Math.PI / 6]}
+          />
+        </group>
+
+        <group ref={floatGroupRef}>
+          <Kapsul
+            scale={5}
+            position={[20, 0, -10]}
+            rotation={[0, 0, Math.PI / 8]}
+          />
+          <Kapsul
+            scale={5}
+            position={[-35, -25, 10]}
+            rotation={[0, 0, Math.PI / -4]}
+          />
+          <Botol
+            scale={30}
+            position={[-25, 0, -5]}
+            rotation={[0, 0, Math.PI / 8]}
+          />
+          <Botol
+            scale={30}
+            position={[45, 10, 10]}
+            rotation={[0, 0, Math.PI / -6]}
+          />
+          <Obat scale={10} position={[40, -30, -5]} rotation={[0, Math.PI / 2, Math.PI / 4]} />
+        </group>
       </group>
     </>
   );
