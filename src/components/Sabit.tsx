@@ -10,15 +10,10 @@ import Botol from "./models/Botol";
 import Obat from "./models/Obat";
 import { useFloatAnimation } from "../func/floatAnimation";
 
-extend({
-  OrbitControls,
-  Celurit,
-  Kapsul,
-});
+extend({ OrbitControls });
 
 const Scene = () => {
   const rotateGroupRef = useRef<Group>(null!);
-  // const floatGroupRef = useRef<Group>(null!);
   const kapsul1Ref = useRef<Group>(null!);
   const kapsul2Ref = useRef<Group>(null!);
   const botol1Ref = useRef<Group>(null!);

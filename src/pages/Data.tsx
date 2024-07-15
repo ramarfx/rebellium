@@ -110,7 +110,6 @@ export const Data = () => {
                   (buttonRefs.current[index] = e as HTMLButtonElement)
                 }
                 data-aos="fade-in"
-                data-aos-delay={index * 200}
                 data-aos-duration={300}
                 className="flex w-full max-w-xs cursor-pointer gap-2 rounded-xl bg-[#6874B9] p-3 transition hover:-translate-y-1 hover:bg-yellow hover:opacity-90 md:w-fit">
                 <div className="flex h-[48px] w-[80px] items-center justify-center rounded-lg bg-white text-black md:h-[96px] md:w-[96px]">
