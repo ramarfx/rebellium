@@ -1,48 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import Swiper from "swiper";
-import { Navigation, Autoplay, EffectCoverflow } from "swiper/modules";
-// import 'swiper/swiper-bundle.min.css';
-import IonIcon from "@reacticons/ionicons";
-import { SwiperOptions } from "swiper/types";
-
-Swiper.use([Navigation, Autoplay, EffectCoverflow]);
+import TeamCard from "../components/SwiperCard";
 
 const Team: React.FC = () => {
-  const teamSwiperRef = useRef<HTMLDivElement>(null);
-
-  const swiperOption: SwiperOptions = {
-    effect: "coverflow",
-    loop: false,
-    grabCursor: true,
-    centeredSlides: true,
-    coverflowEffect: {
-      slideShadows: false,
-      rotate: 0,
-      stretch: -20,
-      depth: 200,
-      modifier: 2.5,
-    },
-    navigation: {
-      nextEl: ".button-next",
-      prevEl: ".button-prev",
-    },
-    initialSlide: 1,
-    breakpoints: {
-      0: {
-        slidesPerView: 1.5,
-      },
-      768: {
-        slidesPerView: 3,
-      },
-    }
-  };
-
-  useEffect(() => {
-    if (teamSwiperRef.current) {
-      new Swiper(teamSwiperRef.current, swiperOption);
-    }
-  }, []);
-
   return (
     <section id="team" className="pb-10 pt-20">
       <div className="container">
@@ -61,168 +19,56 @@ const Team: React.FC = () => {
           <span className="font-bold"> Terhapuskan!</span>
         </p>
 
-        <div
-          className="swiper team w-full sm:min-w-[670px] md:w-1/2"
-          ref={teamSwiperRef}>
-          <div className="swiper-wrapper my-8">
-            {/* <!-- aldo --> */}
-            <div className="swiper-slide">
-              <div className="flip-card">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="px-2 py-3">
-                      <img
-                        alt="team image"
-                        src="/team/aldo.jpg"
-                        className="mx-auto h-[165px] w-auto self-start rounded-md object-cover"
-                      />
-                      <div className="my-4">
-                        <h1 className="text-center text-base font-bold">
-                          Reynaldo Yusellino
-                        </h1>
-                        <p className="text-center text-sm">
-                          Programmer, 3D designer
-                        </p>
-                      </div>
-                      <div className="grid w-full grid-cols-3 justify-items-center gap-3">
-                        <a
-                          href="https://www.instagram.com/rynldysllino"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-instagram"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="https://www.linkedin.com/in/reynaldo-yusellino-564724270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-linkedin"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="https://github.com/reynaldo0"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon name="logo-github" className="text-white" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flip-card-back flex items-center justify-center">
-                    <p>"Jangan lupa titik koma"</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* <!-- Slides --> */}
-            <div className="swiper-slide">
-              <div className="flip-card">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="px-2 py-3">
-                      <img
-                        alt="team image"
-                        src="/team/salman.jpg"
-                        className="mx-auto h-[165px] w-auto self-start rounded-md object-cover"
-                      />
-                      <div className="my-4">
-                        <h1 className="text-center text-base font-bold">
-                          M. Salman Al Farisi
-                        </h1>
-                        <p className="text-center text-sm">
-                          Leader, data analyst
-                        </p>
-                      </div>
-                      <div className="grid w-full grid-cols-3 justify-items-center gap-3">
-                        <a
-                          href="https://www.instagram.com/avlfarizii/"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-instagram"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="#"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-linkedin"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="https://github.com/avlfarizii"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon name="logo-github" className="text-white" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flip-card-back flex items-center justify-center">
-                    <p>"Jangan lupa titik koma"</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* <!-- rama --> */}
-            <div className="swiper-slide">
-              <div className="flip-card">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="px-2 py-3">
-                      <img
-                        alt="team image"
-                        src="/team/rama.jpg"
-                        className="mx-auto h-[165px] w-auto self-start rounded-md object-cover"
-                      />
-                      <div className="my-4">
-                        <h1 className="text-center text-base font-bold">
-                          Ramadina A.
-                        </h1>
-                        <p className="text-center text-sm">Programmer</p>
-                      </div>
-                      <div className="grid w-full grid-cols-3 justify-items-center gap-3">
-                        <a
-                          href="https://www.instagram.com/ramtxh"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-instagram"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="#"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-linkedin"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="https://www.github.com/ramarfx"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon name="logo-github" className="text-white" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flip-card-back flex items-center justify-center">
-                    <p>"Jangan lupa titik koma"</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-5">
-            <button className="button-prev flex h-[50px] w-[50px] items-center justify-center rounded-full border border-yellow bg-transparent text-yellow transition ease-in-out hover:bg-yellow hover:text-white">
-              <IonIcon name="chevron-back-outline" />
-            </button>
-            <button className="button-next flex h-[50px] w-[50px] items-center justify-center rounded-full border border-yellow bg-transparent text-yellow transition ease-in-out hover:bg-yellow hover:text-white">
-              <IonIcon name="chevron-forward-outline" />
-            </button>
-          </div>
-        </div>
+        <TeamCard>
+          <TeamCard.Item
+            image="/team/aldo.jpg"
+            name="Reynaldo Yusellino"
+            description="Programmer, 3D designer">
+            <TeamCard.Link
+              href="https://www.instagram.com/rynldysllino"
+              icon="logo-instagram"
+            />
+            <TeamCard.Link
+              href="https://www.linkedin.com/in/reynaldo-yusellino-564724270"
+              icon="logo-linkedin"
+            />
+            <TeamCard.Link
+              href="https://github.com/reynaldo0"
+              icon="logo-github"
+            />
+          </TeamCard.Item>
+          <TeamCard.Item
+            image="/team/salman.jpg"
+            name="M. Salman Al Farisi"
+            description="Leader, data analyst">
+            <TeamCard.Link
+              href="https://www.instagram.com/avlfarizii"
+              icon="logo-instagram"
+            />
+            <TeamCard.Link href="#" icon="logo-linkedin" />
+            <TeamCard.Link
+              href="https://github.com/avlfarizii"
+              icon="logo-github"
+            />
+          </TeamCard.Item>
+          <TeamCard.Item
+            image="/team/rama.jpg"
+            name="Ramadina A."
+            description="Programmer, 3D designer">
+            <TeamCard.Link
+              href="https://www.instagram.com/ramtxh"
+              icon="logo-instagram"
+            />
+            <TeamCard.Link
+              href="https://www.linkedin.com/in/ramadina-al-muzthazam-5028482a2"
+              icon="logo-linkedin"
+            />
+            <TeamCard.Link
+              href="https://github.com/ramarfx"
+              icon="logo-github"
+            />
+          </TeamCard.Item>
+        </TeamCard>
       </div>
     </section>
   );
