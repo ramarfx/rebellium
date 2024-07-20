@@ -17,7 +17,7 @@ const Home = () => {
         loop: true,
         showCursor: false,
         backDelay: 3500,
-        startDelay: 500,
+        startDelay: 1500,
       });
 
       return () => {
@@ -31,14 +31,16 @@ const Home = () => {
       <div className="container">
         <div className="flex w-full flex-col-reverse flex-wrap items-center justify-between gap-10 md:flex-row md:gap-0">
           <div className="w-full px-4 md:w-1/2">
-            <h1 className="font-poppins text-2xl font-bold md:text-4xl">
+            <h1 className="font-poppins text-2xl font-bold md:text-4xl"
+              data-aos="fade-right"
+              data-aos-duration="1400">
               Bagaimana Kasus Kenakalan Remaja {''}
               <span ref={typedElementRef} className="bg-yellow text-white transition-all"></span>
               ?
             </h1>
             <p
               data-aos="fade-right"
-              data-aos-duration="1000"
+              data-aos-duration="1600"
               className="color py-4 font-poppins text-sm text-secondary-200 md:text-base">
               Kenakalan remaja adalah wujud dari konflik yang tidak
               terselesaikan dengan baik pada masa kanak-kanak maupun pada saat

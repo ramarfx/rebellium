@@ -7,9 +7,10 @@ function Logo() {
     return (
         <Canvas className="pt-10 h-[500px] w-[500px] md:h-[350px] md:w-[600px]"
             camera={{ position: [0, 0, 82] }}>
+            <ambientLight />
             <Suspense>
-                <Logos />
-                <Environment preset="sunset" />
+                    <Logos />
+                    <Environment preset="dawn" />
             </Suspense>
             <OrbitControls enableZoom={ false } autoRotate = {true} autoRotateSpeed={5} />
         </Canvas>
