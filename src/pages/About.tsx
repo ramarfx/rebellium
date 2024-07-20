@@ -1,17 +1,18 @@
 import { useRef } from "react";
 import useScrollAnimation from "../func/scrollAnimation";
-import Logo from "../components/logo";
+import Logo from "../components/Logo";
 
 const About = () => {
   const lineRef = useRef(null);
 
   useScrollAnimation(lineRef, (element, position) => {
     const positionTop = position.top - window.innerHeight;
-    const marginRight = 16; 
+    const marginRight = 16;
 
     if (positionTop < 0) {
       const newWidth = Math.abs(positionTop);
-      const maxWidth = window.innerWidth - element.getBoundingClientRect().left - marginRight;
+      const maxWidth =
+        window.innerWidth - element.getBoundingClientRect().left - marginRight;
       element.style.width = `${Math.min(newWidth, maxWidth)}px`;
     }
   });
@@ -31,7 +32,7 @@ const About = () => {
             <div
               id="loading2"
               className="absolute flex h-56 w-56 items-center justify-center rounded-lg">
-              <Logo/>
+              <Logo />
             </div>
           </div>
           <div className="w-full md:w-1/2">

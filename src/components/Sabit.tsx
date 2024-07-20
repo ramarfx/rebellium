@@ -37,7 +37,7 @@ const Scene = () => {
         <directionalLight intensity={5} position={[30, 50, 30]} />
         <directionalLight intensity={5} position={[-30, -15, -30]} />
 
-        <group>
+        <group ref={rotateGroupRef}>
           <Celurit
             scale={25}
             position={[-20, 0, 0]}
