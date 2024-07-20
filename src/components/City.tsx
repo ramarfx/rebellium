@@ -24,7 +24,7 @@ const City = () => {
         ref={cityRef}
         src="/icon/city2.png"
         alt="city"
-        loading="eager"
+        loading="lazy"
         className="city relative bottom-28 md:bottom-20 -z-10 -mt-5 scale-[2.5] md:w-full md:scale-[1.7]"
       />
     </div>

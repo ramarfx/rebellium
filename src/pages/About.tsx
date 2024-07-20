@@ -25,15 +25,7 @@ const About = () => {
       <div className="container">
         <div className="flex flex-col-reverse flex-wrap items-center justify-between gap-10 md:flex-row md:gap-0">
           <div className="relative flex w-full items-center justify-center md:w-1/2">
-            <canvas
-              id="logoCanvas"
-              className="mx-auto h-[400px] w-[300px] md:w-[500px]"></canvas>
-
-            <div
-              id="loading2"
-              className="absolute flex h-56 w-56 items-center justify-center rounded-lg">
-              <Logo />
-            </div>
+            <Logo />
           </div>
           <div className="w-full md:w-1/2">
             <h1

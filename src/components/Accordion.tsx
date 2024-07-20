@@ -14,7 +14,7 @@ export function Dampak() {
       const newPosition = Math.abs(positionTop);
 
       if (window.innerWidth <= 768) {
-        element.style.transform = `translateX(${newPosition / 10}px)`;
+        element.style.transform = `translateX(${0}px)`;
       } else {
         if (newPosition / 5 < 150) {
           element.style.transform = `translateX(${newPosition / 4}px)`;
@@ -28,7 +28,7 @@ export function Dampak() {
     <div
       ref={accordionRef}
       id="dampak"
-      className="relative right-14 md:right-32 w-full rounded-lg border px-5 py-5 shadow-lg md:w-[400px] transition ease-out duration-150"
+      className="block md:relative right-14 md:right-32 w-full rounded-lg border px-5 py-5 shadow-lg md:w-[400px] transition ease-out duration-150"
       style={{ transform: "translateX(-500px)" }}>
       <h2 className="mb-5 text-center text-2xl font-semibold">
         Dampak Kenakalan Remaja
@@ -139,7 +139,7 @@ export function Solusi() {
       const newPosition = Math.abs(positionTop);
 
       if (window.innerWidth <= 768) {
-        element.style.transform = `translateX(-${newPosition / 10}px)`;
+        element.style.transform = `translateX(-${0}px)`;
       } else {
         if (newPosition / 5 < 150) {
           element.style.transform = `translateX(-${newPosition / 4}px)`;
@@ -153,7 +153,7 @@ export function Solusi() {
     <div
     ref={accordionRef}
       id="solusi"
-      className="relative -right-14 md:-right-32 w-full rounded-lg border px-5 py-5 shadow-lg md:w-[400px] transition ease-out duration-150">
+      className="block md:relative -right-14 md:-right-32 w-full rounded-lg border px-5 py-5 shadow-lg md:w-[400px] transition ease-out duration-150">
       <h2 className="mb-5 text-center text-2xl font-semibold">
         Solusi Kenakalan Remaja
       </h2>
