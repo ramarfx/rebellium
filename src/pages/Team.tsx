@@ -15,7 +15,6 @@ const Team: React.FC = () => {
     loop: false,
     grabCursor: true,
     centeredSlides: true,
-    slidesPerView: 3,
     coverflowEffect: {
       slideShadows: false,
       rotate: 0,
@@ -28,6 +27,14 @@ const Team: React.FC = () => {
       prevEl: ".button-prev",
     },
     initialSlide: 1,
+    breakpoints: {
+      0: {
+        slidesPerView: 1.5,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+    }
   };
 
   useEffect(() => {
@@ -58,56 +65,6 @@ const Team: React.FC = () => {
           className="swiper team w-full sm:min-w-[670px] md:w-1/2"
           ref={teamSwiperRef}>
           <div className="swiper-wrapper my-8">
-            {/* <!-- Slides --> */}
-            <div className="swiper-slide">
-              <div className="flip-card">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <div className="px-2 py-3">
-                      <img
-                        alt="team image"
-                        src="/team/salman.jpg"
-                        className="mx-auto h-[165px] w-auto self-start rounded-md object-cover"
-                      />
-                      <div className="my-4">
-                        <h1 className="text-center text-base font-bold">
-                          M. Salman Al Farisi
-                        </h1>
-                        <p className="text-center text-sm">
-                          Leader, data analyst
-                        </p>
-                      </div>
-                      <div className="grid w-full grid-cols-3 justify-items-center gap-3">
-                        <a
-                          href="https://www.instagram.com/avlfarizii/"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-instagram"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="#"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon
-                            name="logo-linkedin"
-                            className="text-white"
-                          />
-                        </a>
-                        <a
-                          href="https://github.com/avlfarizii"
-                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
-                          <IonIcon name="logo-github" className="text-white" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flip-card-back flex items-center justify-center">
-                    <p>"Jangan lupa titik koma"</p>
-                  </div>
-                </div>
-              </div>
-            </div>
             {/* <!-- aldo --> */}
             <div className="swiper-slide">
               <div className="flip-card">
@@ -146,6 +103,56 @@ const Team: React.FC = () => {
                         </a>
                         <a
                           href="https://github.com/reynaldo0"
+                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
+                          <IonIcon name="logo-github" className="text-white" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flip-card-back flex items-center justify-center">
+                    <p>"Jangan lupa titik koma"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <!-- Slides --> */}
+            <div className="swiper-slide">
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <div className="px-2 py-3">
+                      <img
+                        alt="team image"
+                        src="/team/salman.jpg"
+                        className="mx-auto h-[165px] w-auto self-start rounded-md object-cover"
+                      />
+                      <div className="my-4">
+                        <h1 className="text-center text-base font-bold">
+                          M. Salman Al Farisi
+                        </h1>
+                        <p className="text-center text-sm">
+                          Leader, data analyst
+                        </p>
+                      </div>
+                      <div className="grid w-full grid-cols-3 justify-items-center gap-3">
+                        <a
+                          href="https://www.instagram.com/avlfarizii/"
+                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
+                          <IonIcon
+                            name="logo-instagram"
+                            className="text-white"
+                          />
+                        </a>
+                        <a
+                          href="#"
+                          className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
+                          <IonIcon
+                            name="logo-linkedin"
+                            className="text-white"
+                          />
+                        </a>
+                        <a
+                          href="https://github.com/avlfarizii"
                           className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow text-3xl">
                           <IonIcon name="logo-github" className="text-white" />
                         </a>
