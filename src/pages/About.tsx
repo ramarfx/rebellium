@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import useScrollAnimation from "../func/scrollAnimation";
-import Sabit from "../components/Sabit";
+import Logo from "../components/Logo";
 
 const About = () => {
   const lineRef = useRef(null);
@@ -31,7 +31,7 @@ const About = () => {
             <div
               id="loading2"
               className="absolute flex h-56 w-56 items-center justify-center rounded-lg">
-              <Sabit/>
+              <Logo/>
             </div>
           </div>
           <div className="w-full md:w-1/2">

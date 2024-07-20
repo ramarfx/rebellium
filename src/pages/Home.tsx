@@ -1,9 +1,30 @@
 import { temuanUmum, TemuanUmum } from "../docs/temuanUmum";
 import toggleAccordion from "../func/accordion";
 import Sabit from "../components/Sabit";
+import Typed from 'typed.js';
+import { useEffect, useRef } from "react";
 
 const Home = () => {
   const temuanUmumList: TemuanUmum[] = temuanUmum;
+
+  const typedElementRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    if (typedElementRef.current) {
+      const typed = new Typed(typedElementRef.current, {
+        strings: ["di Indonesia"],
+        typeSpeed: 60,
+        backSpeed: 30,
+        loop: true,
+        showCursor: false,
+        backDelay: 3500,
+        startDelay: 500,
+      });
+
+      return () => {
+        typed.destroy();
+      };
+    }
+  }, []);
 
   return (
     <section id="home" className="pt-24">
@@ -11,8 +32,8 @@ const Home = () => {
         <div className="flex w-full flex-col-reverse flex-wrap items-center justify-between gap-10 md:flex-row md:gap-0">
           <div className="w-full px-4 md:w-1/2">
             <h1 className="font-poppins text-2xl font-bold md:text-4xl">
-              Bagaimana Kasus Kenakalan Remaja di indonesia
-              <span className="indonesia bg-yellow text-white transition-all"></span>
+              Bagaimana Kasus Kenakalan Remaja {''}
+              <span ref={typedElementRef} className="bg-yellow text-white transition-all"></span>
               ?
             </h1>
             <p
