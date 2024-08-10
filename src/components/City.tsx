@@ -10,11 +10,9 @@ const City = () => {
     if (positionTop < 0) {
       const newPosition = Math.abs(positionTop);
 
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth >= 768) {
         element.style.left = `-${newPosition / 4}px`;
-      } else {
-        element.style.left = `-${newPosition / 2}px`;
-      }
+      } 
     }
   });
 
