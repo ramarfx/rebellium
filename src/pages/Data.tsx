@@ -83,9 +83,6 @@ export const Data = () => {
     <section id="data" className="pb-[600px] md:pb-[1000px]">
       <City />
       <div
-        data-aos="fade-up"
-        data-aos-easing="ease-out"
-        data-aos-duration="300"
         id="data-children"
         className="z-20 -mt-20 h-96 w-full rounded-t-3xl bg-white pt-10 md:-mt-28 md:rounded-t-[126px]">
         <div id="data-inner" className="container">

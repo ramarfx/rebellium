@@ -32,7 +32,7 @@ const About = () => {
               id="rebelliumText"
               className="relative mb-8 font-radioCasnada text-4xl font-semibold md:text-5xl">
               Apa itu <span className="text-yellow z-10">Rebellum?</span>
-              <div ref={lineRef} className="line bg-yellow"></div>
+              <div ref={lineRef} className="line bg-yellow z-10"></div>
             </h1>
             <p
               data-aos="fade-zoom-in"
