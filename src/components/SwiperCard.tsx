@@ -93,7 +93,7 @@ TeamCard.Item = (props: TeamCardItemProps) => {
                 <h1 className="text-center text-base font-bold">
                   {props.name}
                 </h1>
-                <p className="text-center text-sm">{props.description}r</p>
+                <p className="text-center text-sm">{props.description}</p>
               </div>
               <div className="grid w-full grid-cols-3 justify-items-center gap-3">
                 {props.children}
