@@ -23,7 +23,7 @@ const Team: React.FC = () => {
           <TeamCard.Item
             image="/team/aldo.jpg"
             name="Reynaldo Yusellino"
-            description="Programmer, 3D designer">
+            description="Illustrator, 3D designer">
             <TeamCard.Link
               href="https://www.instagram.com/rynldysllino"
               icon="logo-instagram"
@@ -54,7 +54,7 @@ const Team: React.FC = () => {
           <TeamCard.Item
             image="/team/rama.jpg"
             name="Ramadina A."
-            description="Programmer, 3D designer">
+            description="Programmer">
             <TeamCard.Link
               href="https://www.instagram.com/ramtxh"
               icon="logo-instagram"
