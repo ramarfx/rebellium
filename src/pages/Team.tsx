@@ -21,9 +21,23 @@ const Team: React.FC = () => {
 
         <TeamCard>
           <TeamCard.Item
+            image="/team/salman.jpg"
+            name="M. Salman Alfarisi"
+            description="Leader, data analyst">
+            <TeamCard.Link
+              href="https://www.instagram.com/avlfarizii"
+              icon="logo-instagram"
+            />
+            <TeamCard.Link href="#" icon="logo-linkedin" />
+            <TeamCard.Link
+              href="https://github.com/avlfarizii"
+              icon="logo-github"
+            />
+          </TeamCard.Item>
+          <TeamCard.Item
             image="/team/aldo.jpg"
             name="Reynaldo Yusellino"
-            description="Illustrator, 3D designer">
+            description="Programmer, 3D designer">
             <TeamCard.Link
               href="https://www.instagram.com/rynldysllino"
               icon="logo-instagram"
@@ -34,20 +48,6 @@ const Team: React.FC = () => {
             />
             <TeamCard.Link
               href="https://github.com/reynaldo0"
-              icon="logo-github"
-            />
-          </TeamCard.Item>
-          <TeamCard.Item
-            image="/team/salman.jpg"
-            name="M. Salman Al Farisi"
-            description="Leader, data analyst">
-            <TeamCard.Link
-              href="https://www.instagram.com/avlfarizii"
-              icon="logo-instagram"
-            />
-            <TeamCard.Link href="#" icon="logo-linkedin" />
-            <TeamCard.Link
-              href="https://github.com/avlfarizii"
               icon="logo-github"
             />
           </TeamCard.Item>
@@ -65,6 +65,40 @@ const Team: React.FC = () => {
             />
             <TeamCard.Link
               href="https://github.com/ramarfx"
+              icon="logo-github"
+            />
+          </TeamCard.Item>
+          <TeamCard.Item
+            image="/team/nazla.jpg"
+            name="Nazla Rahma"
+            description="UI/UX, Illustrator">
+            <TeamCard.Link
+              href="https://www.instagram.com/nazlarhm96"
+              icon="logo-instagram"
+            />
+            <TeamCard.Link
+              href="https://www.linkedin.com/in/nazla-rahma/"
+              icon="logo-linkedin"
+            />
+            <TeamCard.Link
+              href="https://github.com/zlaraa"
+              icon="logo-github"
+            />
+          </TeamCard.Item>
+          <TeamCard.Item
+            image="/team/akmal.jpg"
+            name="Muhammad Akmal S."
+            description="Programmer">
+            <TeamCard.Link
+              href="https://www.instagram.com/m.akmal.saban"
+              icon="logo-instagram"
+            />
+            <TeamCard.Link
+              href="#"
+              icon="logo-linkedin"
+            />
+            <TeamCard.Link
+              href="https://github.com/AkmaldanKamu"
               icon="logo-github"
             />
           </TeamCard.Item>

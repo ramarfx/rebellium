@@ -43,7 +43,7 @@ const TeamCard = (props: TeamCardProps) => {
       nextEl: ".button-next",
       prevEl: ".button-prev",
     },
-    initialSlide: 1,
+    initialSlide: 2,
     breakpoints: {
       0: {
         slidesPerView: 1.5,
